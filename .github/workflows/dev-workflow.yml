@@ -34,6 +34,7 @@ jobs:
           role-to-assume: arn:aws:iam::713881819579:role/github-oidc-vcube
           role-session-name: github-actions
           aws-region: ap-south-1
+          retry-max-attempts: 1
 
       - name: Check AWS Identity
         run: aws sts get-caller-identity
@@ -46,6 +47,7 @@ jobs:
 
       - name: Terraform plan
         run: terraform plan -var-file=dev.tfvars
+
 
   apply:
     runs-on: ubuntu-latest
@@ -72,6 +74,7 @@ jobs:
           role-to-assume: arn:aws:iam::713881819579:role/github-oidc-vcube
           role-session-name: github-actions
           aws-region: ap-south-1
+          retry-max-attempts: 1
 
       - name: Check AWS Identity
         run: aws sts get-caller-identity
